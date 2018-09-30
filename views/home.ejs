@@ -1,0 +1,50 @@
+<html>
+	<head>
+        <title>Complaint Portal</title>
+        <style type="text/css">
+        body{
+            background-color: #e85c41;
+        }
+        .parent {
+            margin-top: 2rem;
+            background-color: #fff;
+            width:40%;
+            margin-left:auto;
+            margin-right: auto;
+            padding: 3.5rem;
+            box-shadow: 0 0 4rem rgba(0,0,0,.3);
+        }
+        .caption{
+            margin-top:3rem;
+            font-size: 2rem;
+        }
+        </style>
+	</head>
+	<body>
+		<center><div class="caption">Complaint Portal</div></center>
+        <form action="/submit" method="POST" class="parent">
+        <table cellpadding=5px>
+			<tr><td>Complaint</td><td><textarea name="c-body" id="c-body" cols="30" rows="8"></textarea></td></tr>
+			<tr><td>Your Name</td><td><input type="text" name="p-name" id="p-name"></td></tr>
+			<tr><td>Locality</td><td><input type="text" name="p-locality" id="p-locality"></td></tr>
+			<tr><td>Pincode</td><td><input type="number" name="p-pincode" id="p-pincode"></td></tr>
+			<tr><td>City</td><td><input type="text" name="p-city" id="p-city"></td></tr>
+            <tr><td>State</td><td><input type="text" name="p-state" id="p-state"></td></tr>
+            <tr><td>Department concerned</td><td> <select name="department">
+                <option value="transportation">Transportation</option>
+                <option value="water">Water</option>
+                <option value="electricity">Electricity</option>
+                <option value="education">Education</option>
+                <option value="revenue">Revenue</option>
+                <option value="general">General</option>
+              </select></td></tr>
+            <tr><td><input type="submit"></td><td></td></tr>
+            </table>
+		</form>
+	</body>
+</html>
+Type a message, @name...
+
+
+
+ 
