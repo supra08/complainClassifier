@@ -37,7 +37,7 @@ app.post('/department',(req,res)=>{
         // res.render('department', data['data']['complain_details'])})
         return data['data']['complain_details']})
     .then(data => res.render('department', {data}))
-    .catch(err => res.send("Error "+err))
+    .catch(err => res.send("Error: "+err))
 })
 
 app.post('/changeStatus', (req, res)=>{
