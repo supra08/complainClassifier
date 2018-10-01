@@ -18,10 +18,35 @@
             margin-top:3rem;
             font-size: 2rem;
         }
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+            background: white;
+        }
+        .nav-button {
+            width: 200px;
+            height: 50px;
+            text-decoration: none;
+            text-align: center;
+            padding-top: 0.8rem;
+            border: 1px solid #e85c41;
+        }
+        .navbar a{
+            text-decoration: none;
+            color: #e85c41;
+        }
         </style>
 	</head>
 	<body>
+        
 		<center><div class="caption">Complaint Portal</div></center>
+        <br>
+        <div class="navbar">
+            <a href="/department"><div class="nav-button">Departments</div></a>
+            <a href="/tracking"><div class="nav-button">Track Your Complaint</div></a>
+        </div>
+        
         <form action="/submit" method="POST" class="parent">
         <table cellpadding=5px>
 			<tr><td>Complaint</td><td><textarea name="c-body" id="c-body" cols="30" rows="8"></textarea></td></tr>
@@ -43,7 +68,6 @@
 		</form>
 	</body>
 </html>
-Type a message, @name...
 
 
 
