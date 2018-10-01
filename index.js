@@ -5,6 +5,7 @@ let sentimentController = require('./controller/sentimentController.js')
 // let departmentController = require('./controller/departmentController.js')
 let departmentModel = require('./models/departmentModel.js')
 let complaintModel = require('./models/complaintModel.js')
+let trackModel = require('./models/trackModel.js')
 const bodyParser = require('body-parser');
 app.use(bodyParser());
 app.set('view engine', 'ejs');
@@ -17,6 +18,18 @@ app.post('/submit',(req, res) => {
     console.log(req.body);
     console.log();
     sentimentController.findUrgency(req,res);
+})
+
+app.get('/tracking', (req, res) => {
+    res.render('tracking');
+})
+
+app.post('/tracking', (req, res) => {
+    console.log(req.body['track-id']);
+    trackModel.getTrack(req.body['track-id'])
+    .then(status => {
+        console.log("now here is the " + status);
+    })
 })
 
 app.get('/department',(req,res) => {

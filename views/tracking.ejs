@@ -1,8 +1,8 @@
 <html>
 	<head>
-		<title>
-			Departmental Login
-		</title>
+		<track>
+			Track your complaint
+		</track>
 		<style>
 			@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
@@ -117,24 +117,17 @@ form{
 		}
 	}
 }
-
 		</style>
 	</head>
 	<body>
-		
 		<div class="wrapper">
 			<div class="container">
-				<h1>Departmental Login</h1>
-				<h5>Enter the governmental departmental credentials</h5>
-				<form method="POST" action="department" class="form">
-				   <input type="text" name="department" placeholder="department">
-				   <input type="password" name="password" placeholder="password">
-				    <input type="submit" value="submit" id="login-button">
+				<h1>Track Your Complaint</h1>
+				<form action="/tracking" method="post">
+					<input type="text" name="track-id" placeholder="Complaint-ID">
+					<input type="submit" value="submit">
 				</form>
 			</div>
 		</div>
-		<script>
-		</script>
 	</body>
 </html>
-
