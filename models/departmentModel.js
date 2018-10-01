@@ -21,9 +21,7 @@ departmentModule.authenticate = (department, password) => {
         else{
             reject("Wrong Password");
         }
-        // console.log('data returned:', data['data']['department'][0]['id'])
     });
-    // resolve(department);
 });
 }
 
