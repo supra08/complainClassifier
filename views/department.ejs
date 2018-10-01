@@ -32,13 +32,14 @@
 				     <td><%= data[i].plaintiff_pincode %></td>
 				     <td><%= data[i].plaintiff_city %></td>
 				     <td><%= data[i].urgency %></td>
-		             <td><form action='/changeStatus' method="POST">
+		             <td><form action='/department' method="POST">
 		                <hr/>
 				        Finished : <input type="radio" name="status" value="finish" id="finish">
 						On Process : <input type="radio" name="status" value="process" id="process">
 						Not Started : <input type="radio" name="status" value="notstarted" id="notstarted">
 						<input type="submit" id="submit" value="Submit">
 						<input type="hidden" name="id" id="id" value= '<%= data[i].id %>' >
+						<input type="hidden" name="department" id="department" value="<%= department %>">
 		            </form>
 		            </td>
 				   </tr>

@@ -23,10 +23,6 @@ app.get('/tracking', (req, res) => {
 
 app.post('/tracking', (req, res) => {
     trackModel.getTrack(req.body['track-id'])
-    .then(status => {
-        console.log("now here is the " + status);
-        return status;
-    })
     .then(status => res.render('trackDetails', {status}))
     .catch(err => res.send("Error: "+err))
 })
@@ -36,35 +32,34 @@ app.get('/department',(req,res) => {
 })
 
 app.post('/department',(req,res)=>{
-    let dept;
+    if(req.body['id'] == undefined){
     departmentModel.authenticate(req.body['department'],req.body['password'])
-    .then(department => {
-        dept = department;
-        return complaintModel.list(department)})
-    .then(data => {
-        return data['data']['complain_details']})
-    .then(data => res.render('department', {data}))
-    .catch(err => res.send("Error: "+err))
-})
-
-app.post('/changeStatus', (req, res)=>{
-    let status;
-    if(req.body['finish'] == 'on'){
-        status = 'finish'
-    }
-    else if(req.body['process'] == 'on'){
-        status = 'process'
-    }
-    else if(req.body['notstarted'] == 'on'){
-        status = 'notstarted'
-    }
-    complaintModel.update(req.body['id'], status)
     .then(department => complaintModel.list(department))
+    .then(data => data['data']['complain_details'])
     .then(data => {
-        // res.render('department', data['data']['complain_details'])})
-        return data['data']['complain_details']})
-    .then(data => res.render('department', {data}))
-    .catch(err => res.send("Error "+err))
+        department = req.body['department'];
+        res.render('department', {data, department})})
+    .catch(err => res.send("Error: "+err))
+    }
+    else{
+        let status;
+        if(req.body['finish'] == 'on'){
+            status = 'finish'
+        }
+        else if(req.body['process'] == 'on'){
+            status = 'process'
+        }
+        else if(req.body['notstarted'] == 'on'){
+            status = 'notstarted'
+        }
+        complaintModel.update(req.body['id'], status, req.body['department'])
+        .then(department => complaintModel.list(department))
+        .then(data =>  data['data']['complain_details'])
+        .then(data => {
+            department = req.body['department'];
+            return res.render('department', {data, department});})
+        .catch(err => res.send("Error "+err))
+    }
 })
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
