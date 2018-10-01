@@ -44,19 +44,19 @@ complaintModel.insert = function(body, urgency) {
     });
 }
 
-complaintModel.update = (id, status) => {
-    return new Promise((resolve, reject) => {
-        console.log("supra ka diya hua "+ status );
-        fetch('https://hasuraa.herokuapp.com/v1alpha1/graphql', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({query:'mutation {update_complain_details(where: {id: {_eq:'+ id +'}},_set: {complaint_status: "'+status+'"}) {affected_rows}}'})
+    complaintModel.update = (id, status) => {
+        return new Promise((resolve, reject) => {
+            console.log("supra ka diya hua "+ status );
+            fetch('https://hasuraa.herokuapp.com/v1alpha1/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({query:'mutation {update_complain_details(where: {id: {_eq:'+ id +'}},_set: {complaint_status: "'+status+'"}) {affected_rows}}'})
+        })
     })
-})
-.then(r => r.json())
-.then(data => console.log('data returned:', data));
-}
+    .then(r => r.json())
+    .then(data => console.log('data returned:', data));
+    }
 module.exports = complaintModel;
