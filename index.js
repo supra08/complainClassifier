@@ -29,7 +29,10 @@ app.post('/tracking', (req, res) => {
     trackModel.getTrack(req.body['track-id'])
     .then(status => {
         console.log("now here is the " + status);
+        return status;
     })
+    .then(status => res.render('trackDetails', {status}))
+    .catch(err => res.send("Error: "+err))
 })
 
 app.get('/department',(req,res) => {
