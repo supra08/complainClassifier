@@ -23,7 +23,6 @@ sentimentController.findUrgency = (req, res) => {
             label = 'low';
             else
             label = 'Not of interest right now';
-            console.log(label);
             Model.insert(req.body, label)
             .then((complain_id) => {
                 res.send("Your Complaint has been succesfully registered and your complain id is " + complain_id);

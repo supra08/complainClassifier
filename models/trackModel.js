@@ -14,7 +14,6 @@ trackModel.getTrack = function(id) {
 		})
 		  .then(r => r.json())
 		  .then(data => {
-		  				console.log('data returned:', data);
 		  				return data['data']['complain_details'][0]['complaint_status'];
 							})
 		  .then(status => resolve(status))
